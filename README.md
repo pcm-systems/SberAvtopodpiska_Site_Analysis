@@ -63,3 +63,7 @@ Telegram bot  - https://t.me/HahatonVangaBot
 ## Содержание репозитория:
 
 * SberAvtopodpiska_Site_Analysis.ipynb - блокнот с подготовкой данных, разведочным анализом (EDA), оценкой модели ML и сериализацией pipeline
+* project  - основной проект, включает в себя:
+  * model - код и файлы контейнера модели
+  * telegram_bot_api - код и файлы контейнера телеграм бота
+  * web_api - код и файлы контейнера web интерфейса
