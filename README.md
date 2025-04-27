@@ -57,3 +57,7 @@ Telegram bot  - https://t.me/HahatonVangaBot
 `docker-compose build`
 
 `docker-compose up -d`
+
+## Содержание репозитория:
+
+* SberAvtopodpiska_Site_Analysis.ipynb - блокнот с подготовкой данных, разведочным анализом (EDA), оценкой модели ML и сериализацией pipeline
