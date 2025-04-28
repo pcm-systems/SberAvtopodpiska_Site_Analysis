@@ -1,5 +1,0 @@
-numpy;
-pika;
-catboost;
-scikit-learn;
-pandas;
