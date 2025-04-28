@@ -159,7 +159,6 @@ while True:
             columns =["visit_date","visit_time","visit_number","utm_source","utm_medium","device_category","device_screen_resolution","device_browser","geo_country","geo_city"]
             arr = np.array(features).reshape(-1, len(columns))
             df = pd.DataFrame(arr, columns=columns)
-
             pred = int(catboost_model.predict(df)[0])
             
             # Публикуем ответ в очередь output_web_data
@@ -167,7 +166,7 @@ while True:
                             routing_key='output_web_data',
                             body=json.dumps(pred))
             
-            print(f'Предсказание {pred[0]} отправлено в очередь output_data')
+            print(f'Предсказание {pred} отправлено в очередь output_data')
 
 
         # Извлекаем сообщение из очереди input_telegram_data
