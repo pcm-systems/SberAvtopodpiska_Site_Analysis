@@ -3,9 +3,7 @@ from fastapi.responses import FileResponse
 from datetime import datetime
 import pika
 import json
-# web принимает сообщение и пуяет его в очередь
-# модель его обрабатывает и возвращает обратно
-# это сообщение нужно выплюнуть обратно в web
+
 
 app = FastAPI()
 
@@ -19,7 +17,6 @@ def root():
 def predict (features: list =Form()):
 
     # Переменная для предсказаний и ошибок
-    у_pred = None
     errors = []
 
     # Проверки для date и time
@@ -34,7 +31,9 @@ def predict (features: list =Form()):
 
     if len(errors) != 0:
         return f"Incorrect '{(', ').join(errors)}' format! Please fix it and try again"
-
+    
+    # Преобразование типа столбца visit_number
+    features[2] =  int(features[2])
 
     try:
         # Создаём подключение по адресу rabbitmq:
