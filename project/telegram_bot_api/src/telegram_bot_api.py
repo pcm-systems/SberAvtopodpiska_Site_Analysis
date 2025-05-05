@@ -11,10 +11,10 @@ generate_data = None
 x_gen = None
 y_gen = None 
 
-
-# инициализация бота
+# Инициализация бота
 bot = telebot.TeleBot(token='', threaded=False)
 
+# Считывание набора данных для теста
 data = pd.read_csv("test.csv")
 data.drop(columns="Unnamed: 0", inplace=True)
 
@@ -70,7 +70,6 @@ def truth_bot(msg):
     except Exception as e:
         bot.send_message(msg.chat.id, "Ошибка, возможно вы забыли сгенерировать данные!")
 
-
 # /predict
 @bot.message_handler(commands=['predict'])
 def truth_bot(msg):
@@ -115,8 +114,6 @@ def truth_bot(msg):
               # Останавливаем очередь после обработки сообщения
               ch.stop_consuming()
           
-      
-
           # Извлекаем сообщение из очереди output_telegram_data
           channel.basic_consume(
               queue='output_telegram_data',
