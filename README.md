@@ -50,7 +50,7 @@ Web API работает на локальном адресе http://127.0.0.1:8
 
 Telegram bot  - https://t.me/HahatonVangaBot
 
-![11111](https://github.com/user-attachments/assets/b5bad3be-2c09-4bc0-8615-4862625c6bc3)
+![архитектура](https://github.com/user-attachments/assets/fedbd2f6-0738-401b-a76f-be98f28e80ec)
 
 ## Установка:
 
