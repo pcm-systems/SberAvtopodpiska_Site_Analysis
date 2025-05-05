@@ -138,6 +138,7 @@ while True:
             # print(f'Из очереди {method.routing_key} получено значение {json.loads(body)}')
             features = json.loads(body)
 
+            # Формирование набора данных для модели
             columns =["visit_date","visit_time","visit_number","utm_source","utm_medium","device_category","device_screen_resolution","device_browser","geo_country","geo_city"]
             arr = np.array(features).reshape(-1, len(columns))
             df = pd.DataFrame(arr, columns=columns)
@@ -155,7 +156,8 @@ while True:
             """Функция callback для обработки данных из очереди input_web_data"""
             #print(f'Из очереди {method.routing_key} получено значение {json.loads(body)}')
             features = json.loads(body)
-
+            
+            # Формирование набора данных для модели
             columns =["visit_date","visit_time","visit_number","utm_source","utm_medium","device_category","device_screen_resolution","device_browser","geo_country","geo_city"]
             arr = np.array(features).reshape(-1, len(columns))
             df = pd.DataFrame(arr, columns=columns)
