@@ -50,7 +50,6 @@ def predict (features: list =Form()):
                           routing_key='input_web_data',
                           body=json.dumps(features))
 
-
         def callback(ch, method, properties, body):
             """Функция для получения данных из очередь output_web_data"""
             global y_pred
@@ -58,7 +57,6 @@ def predict (features: list =Form()):
             print(f'Из очереди {method.routing_key} получено значение {y_pred}')
             ch.stop_consuming()
             return 
-
 
         # Извлекаем сообщение из очереди output_web_data
         # on_message_callback показывает, какую функцию вызвать при получении сообщения
@@ -71,6 +69,4 @@ def predict (features: list =Form()):
 
     except:
         return f'Error'
-
     return f'The probability of the target action being performed by the user - {y_pred}'
-
