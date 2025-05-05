@@ -12,17 +12,15 @@ x_gen = None
 y_gen = None 
 
 
-# Инициализация бота
+# инициализация бота
 bot = telebot.TeleBot(token='', threaded=False)
 
-# Считывание набора данных для теста
 data = pd.read_csv("test.csv")
 data.drop(columns="Unnamed: 0", inplace=True)
 
 # /start
 @bot.message_handler(commands=['start'])
 def start_bot(msg):
-
     """Начало работы бота и описание команд"""
    
     message_line = ('Привет, я бот предсказатель результата!\n\n\n'
@@ -33,9 +31,7 @@ def start_bot(msg):
                     )
     bot.send_message(msg.chat.id, message_line)
 
-
 # /generate_data
-
 @bot.message_handler(commands=['generate_data'])
 def generate_data_bot(msg):
 
@@ -60,9 +56,7 @@ def generate_data_bot(msg):
                     )
     bot.send_message(msg.chat.id, message_line)
 
-
 # /truth  
-
 @bot.message_handler(commands=['truth'])
 def truth_bot(msg):
 
@@ -78,7 +72,6 @@ def truth_bot(msg):
 
 
 # /predict
-
 @bot.message_handler(commands=['predict'])
 def truth_bot(msg):
 
@@ -122,6 +115,8 @@ def truth_bot(msg):
               # Останавливаем очередь после обработки сообщения
               ch.stop_consuming()
           
+      
+
           # Извлекаем сообщение из очереди output_telegram_data
           channel.basic_consume(
               queue='output_telegram_data',
@@ -131,8 +126,8 @@ def truth_bot(msg):
 
           # Запускаем режим ожидания прихода сообщений
           channel.start_consuming()
-          # Закрываем соединение
-          connection.close()  
+          connection.close()  # Закрываем соединение
       except:
           bot.send_message(msg.chat.id, "Не могу подключиться к очереди")
+
 bot.polling()
